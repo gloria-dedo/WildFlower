@@ -1,17 +1,11 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: SEE LICENSE IN LICENSE
 pragma solidity ^0.8.20;
 
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Ecedes is ERC20, Ownable {
-    uint constant _initial_supply = 1000000 * (10**18);
-
-    constructor() ERC20("Ecedi", "ECD" ) {
-        _mint(owner(), _initial_supply);
-    }
-
-    function mint(address to, uint256 amount ) public onlyOwner {
-        _mint(to, amount);
+contract Currency is ERC20 {
+    constructor(string memory name, string memory symbol) ERC20(name, symbol) {
+        _mint(msg.sender, 1000000000000000000000000000);
     }
 }
